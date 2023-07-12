@@ -59,8 +59,22 @@ public class PhoneBook {
         return phonebook.get(name);
     }
 
-    public String reverseLookup(String phoneNumber)  {
+    public String reverseLookup(String phoneNumber) {
+        /*
+        for (String key : phonebook.keySet()) {
+            if (phonebook.get(key).contains(phoneNumber)) {
+                return key;
+            }
+        }
         return null;
+
+         */
+        for (String key : phonebook.keySet()) {
+        if (hasEntry(key, phoneNumber)) {
+            return key;
+            }
+        }
+            return null;
     }
 
     public List<String> getAllContactNames() {
