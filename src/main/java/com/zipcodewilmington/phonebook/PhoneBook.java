@@ -18,7 +18,7 @@ public class PhoneBook {
     }
 
     public PhoneBook() { //nullary constructor
-        this(new TreeMap<>());
+        this(new LinkedHashMap<>());  // this.... this right here >:(
     }
 
     public void add(String name, String phoneNumber) {
