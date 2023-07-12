@@ -22,24 +22,41 @@ public class PhoneBook {
     }
 
     public void add(String name, String phoneNumber) {
+        if (phonebook.containsKey(name)) {
+            phonebook.get(name).add(phoneNumber); ///see below
+        } else {
+            phonebook.put(name, new ArrayList<>());  //creating a new arraylist for phone numbers
+            phonebook.get(name).add(phoneNumber); //get the List value and then add the phone number
+        }
     }
 
     public void addAll(String name, String... phoneNumbers) {
+        for (String s : phoneNumbers) {
+            add(name, s);
+        }
     }
 
     public void remove(String name) {
+        if (hasEntry(name)) { //because we wrote this
+            phonebook.remove(name);
+        }
     }
 
     public Boolean hasEntry(String name, String phoneNumber) {
-        return null;
-    }  //added method
+
+        if (phonebook.containsKey(name) && phonebook.get(name).contains(phoneNumber)) {
+            return true;  // if the phone book contains the name and also the phone number
+        }
+        return false;
+    }  //added method because test wants it
 
     public Boolean hasEntry(String name) {
-        return null;
+
+        return phonebook.containsKey(name);
     }
 
     public List<String> lookup(String name) {
-        return null;
+        return phonebook.get(name);
     }
 
     public String reverseLookup(String phoneNumber)  {
@@ -51,6 +68,6 @@ public class PhoneBook {
     }
 
     public Map<String, List<String>> getMap() {
-        return new HashMap(phonebook);  //convert that shit to a hashmap because that's what the test wants
+        return new HashMap(phonebook);  //convert that to a hashmap because it's what the test wants
     }
 }
