@@ -78,7 +78,11 @@ public class PhoneBook {
     }
 
     public List<String> getAllContactNames() {
-        return null;
+        ArrayList<String> names = new ArrayList<>();
+        for (String s : phonebook.keySet()){
+            names.add(s);
+        }
+        return names;
     }
 
     public Map<String, List<String>> getMap() {
